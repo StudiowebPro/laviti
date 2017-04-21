@@ -7,6 +7,11 @@
 Route::get('/', 'FrontendController@index')->name('index');
 Route::get('macros', 'FrontendController@macros')->name('macros');
 
+Route::get('test', 'FrontendController@test')->name('test');
+//
+Route::post('/formatest', 'FrontendController@formatest')->name('formatest');
+
+
 /*
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'

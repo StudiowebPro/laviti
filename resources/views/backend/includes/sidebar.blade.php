@@ -36,6 +36,32 @@
                     <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
                 </a>
             </li>
+            <li class="header">{{ trans('menus.backend.sidebar.shop') }}</li>
+            @role(1)
+            <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>{{ trans('menus.backend.access.shop_title_products') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+
+                <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/access/*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/access/*'), 'display: block;') }}">
+                    <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
+                        <a href="{{ route('admin.access.product.index') }}">
+                            <i class="fa fa-circle-o"></i>
+                            <span>{{ trans('labels.backend.access.products.management') }}</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ active_class(Active::checkUriPattern('admin/access/role*')) }}">
+                        <a href="{{ route('admin.access.role.index') }}">
+                            <i class="fa fa-circle-o"></i>
+                            <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endauth
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 

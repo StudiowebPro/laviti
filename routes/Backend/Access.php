@@ -15,44 +15,37 @@ Route::group([
     Route::group([
         'middleware' => 'access.routeNeedsRole:1',
     ], function () {
+
         Route::group(['namespace' => 'User'], function () {
             /*
              * For DataTables
              */
             Route::post('user/get', 'UserTableController')->name('user.get');
-
             /*
              * User Status'
              */
             Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
             Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
-
             /*
              * User CRUD
              */
             Route::resource('user', 'UserController');
-
             /*
              * Specific User
              */
             Route::group(['prefix' => 'user/{user}'], function () {
                 // Account
                 Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
-
                 // Status
                 Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
-
                 // Password
                 Route::get('password/change', 'UserPasswordController@edit')->name('user.change-password');
                 Route::patch('password/change', 'UserPasswordController@update')->name('user.change-password');
-
                 // Access
                 Route::get('login-as', 'UserAccessController@loginAs')->name('user.login-as');
-
                 // Session
                 Route::get('clear-session', 'UserSessionController@clearSession')->name('user.clear-session');
             });
-
             /*
              * Deleted User
              */
@@ -71,5 +64,19 @@ Route::group([
             //For DataTables
             Route::post('role/get', 'RoleTableController')->name('role.get');
         });
+
+        /*
+        * Products Management
+        */
+        Route::group(['namespace' => 'Product'], function () {
+
+            Route::post('product/ajaxupload', 'ProductController@ajaxupload')->name('product.ajaxupload');
+            /*
+             * Product CRUD
+            */
+            Route::resource('product', 'ProductController');
+            Route::post('product/get', 'ProductTableController')->name('product.get');
+        });
+
     });
 });

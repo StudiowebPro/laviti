@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://laviti.app'),
 
     /*
     |--------------------------------------------------------------------------
@@ -201,6 +201,8 @@ return [
         App\Providers\MacroServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
     ],
 
     /*
@@ -260,6 +262,9 @@ return [
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
 
     ],
 

@@ -92,4 +92,11 @@ return [
          */
         'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
     ],
+
+    /*
+    * Products table used to store products
+    */
+    'products_table' => 'products',
+
+
 ];

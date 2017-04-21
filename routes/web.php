@@ -14,6 +14,10 @@ Route::get('lang/{lang}', 'LanguageController@swap');
  * Frontend Routes
  * Namespaces indicate folder structure
  */
+
+Route::post('/frmt/2', 'TestController@formatest');
+
+
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
     includeRouteFiles(__DIR__.'/Frontend/');
 });

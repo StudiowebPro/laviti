@@ -32,7 +32,7 @@ class UserTableController extends Controller
      */
     public function __invoke(ManageUserRequest $request)
     {
-        return Datatables::of($this->users->getForDataTable($request->get('status'), $request->get('trashed')))
+        $rez = Datatables::of($this->users->getForDataTable($request->get('status'), $request->get('trashed')))
             ->escapeColumns(['name', 'email'])
             ->editColumn('confirmed', function ($user) {
                 return $user->confirmed_label;
@@ -43,9 +43,11 @@ class UserTableController extends Controller
                     trans('labels.general.none');
             })
             ->addColumn('actions', function ($user) {
+                $v = $user->action_buttons;
                 return $user->action_buttons;
             })
             ->withTrashed()
             ->make(true);
+        return $rez;
     }
 }
