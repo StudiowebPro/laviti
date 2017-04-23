@@ -63,6 +63,12 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'media' => [
+            'driver' => 'local',
+   //         'root'   => public_path('media'),
+            'root'   => public_path('storage/media'),
+        ],
+
     ],
 
 ];

@@ -1,19 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: OldDev
- * Date: 19.04.2017
- * Time: 6:26
+ * User: Tom
+ * Date: 22.04.2017
+ * Time: 17:31
  */
 
-namespace App\Http\Requests\Backend\Access\Product;
+namespace App\Http\Requests\Backend\Showcase\Product;
 
 use App\Http\Requests\Request;
 
-/**
- * Class ManageProductRequest.
- */
-class ManageProductRequest extends Request
+class UpdateProductRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,4 +33,5 @@ class ManageProductRequest extends Request
             //
         ];
     }
+
 }

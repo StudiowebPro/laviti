@@ -2,6 +2,8 @@
 
 return [
 
+
+    'mediaurl' => 'storage/media/',
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -202,6 +204,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
 
     ],
 

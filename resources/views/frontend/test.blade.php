@@ -16,10 +16,10 @@
 <div class="container">
         <div class="row">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#main-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabmain') }}</a></li>
-            <li><a href="#img-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabimg') }}</a></li>
-            <li><a href="#seo-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabseo') }}</a></li>
-            <li><a href="#other-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabother') }}</a></li>
+            <li class="active"><a href="#main-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabmain') }}</a></li>
+            <li><a href="#img-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabimg') }}</a></li>
+            <li><a href="#seo-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabseo') }}</a></li>
+            <li><a href="#other-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabother') }}</a></li>
         </ul>
         <div class="tab-content" style="margin-top: 10px;">
             <!-- Filesystem tab -->

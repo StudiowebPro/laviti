@@ -15,6 +15,8 @@ Route::get('lang/{lang}', 'LanguageController@swap');
  * Namespaces indicate folder structure
  */
 
+
+
 Route::post('/frmt/2', 'TestController@formatest');
 
 
@@ -36,5 +38,6 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
+
     includeRouteFiles(__DIR__.'/Backend/');
 });

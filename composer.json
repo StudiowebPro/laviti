@@ -15,11 +15,13 @@
         "barryvdh/laravel-ide-helper": "^2.3",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "filp/whoops": "~1.0.",
         "hieu-le/active": "~3.0",
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "5.4.*",
+        "spatie/laravel-medialibrary": "5.10.0",
         "yajra/laravel-datatables-oracle": "^7.0"
     },
     "require-dev": {

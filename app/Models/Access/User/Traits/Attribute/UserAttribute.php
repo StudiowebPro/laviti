@@ -255,5 +255,6 @@ trait UserAttribute
             $this->getStatusButtonAttribute().
             $this->getConfirmedButtonAttribute().
             $this->getDeleteButtonAttribute();
+
     }
 }

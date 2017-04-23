@@ -94,7 +94,7 @@ return [
     ],
 
     /*
-    * Products table used to store products
+    * Product table used to store products
     */
     'products_table' => 'products',
 

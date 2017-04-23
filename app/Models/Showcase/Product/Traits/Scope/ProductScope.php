@@ -6,7 +6,7 @@
  * Time: 5:29
  */
 
-namespace App\Models\Access\Product\Traits\Scope;
+namespace App\Models\Showcase\Product\Traits\Scope;
 
 /**
  * Class ProductScope.

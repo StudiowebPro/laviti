@@ -1,8 +1,9 @@
 <?php
-
 /**
  * All route names are prefixed with 'admin.access'.
  */
+
+
 Route::group([
     'prefix'     => 'access',
     'as'         => 'access.',
@@ -64,19 +65,5 @@ Route::group([
             //For DataTables
             Route::post('role/get', 'RoleTableController')->name('role.get');
         });
-
-        /*
-        * Products Management
-        */
-        Route::group(['namespace' => 'Product'], function () {
-
-            Route::post('product/ajaxupload', 'ProductController@ajaxupload')->name('product.ajaxupload');
-            /*
-             * Product CRUD
-            */
-            Route::resource('product', 'ProductController');
-            Route::post('product/get', 'ProductTableController')->name('product.get');
-        });
-
     });
 });

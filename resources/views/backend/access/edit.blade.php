@@ -11,7 +11,6 @@
 
 @section('content')
     {{ Form::model($user, ['route' => ['admin.access.user.update', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
-
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ trans('labels.backend.access.users.edit') }}</h3>
@@ -20,7 +19,6 @@
                     @include('backend.access.includes.partials.user-header-buttons')
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
-
             <div class="box-body">
                 <div class="form-group">
                     {{ Form::label('name', trans('validation.attributes.backend.access.users.name'), ['class' => 'col-lg-2 control-label']) }}
@@ -94,7 +92,6 @@
                 @endif
             </div><!-- /.box-body -->
         </div><!--box-->
-
         <div class="box box-success">
             <div class="box-body">
                 <div class="pull-left">
@@ -108,13 +105,11 @@
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->
         </div><!--box-->
-
         @if ($user->id == 1)
             {{ Form::hidden('status', 1) }}
             {{ Form::hidden('confirmed', 1) }}
             {{ Form::hidden('assignees_roles[]', 1) }}
         @endif
-
     {{ Form::close() }}
 @endsection
 

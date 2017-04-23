@@ -47,9 +47,9 @@
 
                 <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/access/*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/access/*'), 'display: block;') }}">
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
-                        <a href="{{ route('admin.access.product.index') }}">
+                        <a href="{{ route('admin.showcase.product.index') }}">
                             <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.access.products.management') }}</span>
+                            <span>{{ trans('labels.backend.showcase.product.management') }}</span>
                         </a>
                     </li>
 

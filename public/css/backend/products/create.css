@@ -12,3 +12,31 @@
     margin-left: 15px;
     width: 90%;
 }
+
+.tab-pane {
+    margin: 20px;
+}
+
+.rowtb {
+    margin-top: 10px;
+}
+.rowtbl {
+    margin-top: 10px;
+}
+
+.liImg {
+    display: block;
+    margin-top: 20px;
+    border-top-color: #00a65a;
+    border-bottom: 3px solid #d2d6de;
+}
+
+.delOldImgBtn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.delImgBtn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

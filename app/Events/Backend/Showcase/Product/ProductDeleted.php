@@ -1,18 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: OldDev
- * Date: 19.04.2017
- * Time: 4:44
+ * User: Tom
+ * Date: 22.04.2017
+ * Time: 22:03
  */
 
-namespace App\Events\Backend\Access\Product;
+namespace App\Events\Backend\Showcase\Product;
+
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class ProductCreated.
+ * Class ProductDeleted.
  */
-class ProductCreated
+class ProductDeleted
 {
     use SerializesModels;
 
@@ -28,4 +29,5 @@ class ProductCreated
     {
         $this->product = $product;
     }
+
 }

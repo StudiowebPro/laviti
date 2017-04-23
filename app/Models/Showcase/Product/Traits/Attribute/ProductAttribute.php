@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Access\Product\Traits\Attribute;
+namespace App\Models\Showcase\Product\Traits\Attribute;
 
 /**
  * Class ProductAttribute.
@@ -13,6 +13,11 @@ trait ProductAttribute
      */
     public function getActionButtonsAttribute()
     {
+        if ($this->trashed()) {
+            return $this->getRestoreButtonAttribute();
+//                $this->getDeletePermanentlyButtonAttribute();
+        }
+
         return  $this->getEditButtonAttribute().
 //            $this->getClearSessionButtonAttribute().
 //            $this->getLoginAsButtonAttribute().
@@ -26,9 +31,22 @@ trait ProductAttribute
     /**
      * @return string
      */
+    public function getDeletePermanentlyButtonAttribute()
+    {
+        return '<a href="'.route('admin.access.user.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.delete_permanently').'"></i></a> ';
+    }
+
+    public function getRestoreButtonAttribute()
+    {
+        return '<a href="'.route('admin.showcase.product.restore', $this).'" name="restore_product" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.showcase.product.restore_product').'"></i></a> ';
+    }
+
+    /**
+     * @return string
+     */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.access.product.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
+        return '<a href="'.route('admin.showcase.product.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
     }
 
     /**
@@ -59,7 +77,7 @@ trait ProductAttribute
     public function getDeleteButtonAttribute()
     {
         if ($this->id != access()->id()) {
-            return '<a href="'.route('admin.access.user.destroy', $this).'"
+            return '<a href="'.route('admin.showcase.product.destroy', $this).'"
                  data-method="delete"
                  data-trans-button-cancel="'.trans('buttons.general.cancel').'"
                  data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"

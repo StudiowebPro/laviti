@@ -6,7 +6,7 @@
  * Time: 4:26
  */
 
-namespace App\Http\Requests\Backend\Access\Product;
+namespace App\Http\Requests\Backend\Showcase\Product;
 
 use App\Http\Requests\Request;
 

@@ -6,12 +6,12 @@
  * Time: 6:54
  */
 
-namespace app\Http\Controllers\Backend\Access\Product;
+namespace app\Http\Controllers\Backend\Showcase\Product;
 
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
-use App\Repositories\Backend\Access\Product\ProductRepository;
-use App\Http\Requests\Backend\Access\Product\ManageProductRequest;
+use App\Repositories\Backend\Showcase\Product\ProductRepository;
+use App\Http\Requests\Backend\Showcase\Product\ManageProductRequest;
 
 class ProductTableController extends Controller
 {
@@ -45,6 +45,18 @@ class ProductTableController extends Controller
 //                    implode('<br/>', $user->roles->pluck('name')->toArray()) :
 //                    trans('labels.general.none');
 //            })
+            ->addColumn('img', function ($product) {
+//                $mediaItems = $product->getMedia();
+                $mediaItem = $product->getFirstMedia('images');
+                if ($mediaItem) {
+//                    $vp = $mediaItem->getUrl();
+//                    $vu = asset(config('app.mediaurl').$mediaItem->file_name);
+                    $vu = ('<img src="'.$mediaItem->getUrl('thumb150').'">');
+                    return $vu;
+                } else {
+                    return 'wwww';
+                }
+            })
             ->addColumn('actions', function ($product) {
                 return $product->action_buttons;
             })

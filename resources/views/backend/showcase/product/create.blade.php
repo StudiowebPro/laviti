@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.products.management') . ' | ' . trans('labels.backend.access.products.create'))
+@section ('title', trans('labels.backend.showcase.product.management') . ' | ' . trans('labels.backend.showcase.product.create'))
 
 @section('after-styles')
     {{--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />--}}
@@ -9,32 +9,32 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.products.management') }}
-        <small>{{ trans('labels.backend.access.products.create') }}</small>
+        {{ trans('labels.backend.showcase.product.management') }}
+        <small>{{ trans('labels.backend.showcase.product.create') }}</small>
 
     </h1>
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => 'admin.access.product.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::open(['route' => 'admin.showcase.product.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
 
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.access.products.createtitle') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.showcase.product.createtitle') }}</h3>
             <div class="box-tools pull-right">
-                @include('backend.access.includes.partials.user-header-buttons')
+                @include('backend.showcase.includes.partials.product-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
 
-        <div class="container">
-            <div class="row">
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#main-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabmain') }}</a></li>
-                    <li><a href="#img-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabimg') }}</a></li>
-                    <li><a href="#seo-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabseo') }}</a></li>
-                    <li><a href="#descriptions-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabdescription') }}</a></li>
-                    <li><a href="#other-tab" data-toggle="tab">{{ trans('labels.backend.access.products.tabother') }}</a></li>
+                    <li class="active"><a href="#main-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabmain') }}</a></li>
+                    <li><a href="#img-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabimg') }}</a></li>
+                    <li><a href="#seo-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabseo') }}</a></li>
+                    <li><a href="#descriptions-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabdescription') }}</a></li>
+                    <li><a href="#other-tab" data-toggle="tab">{{ trans('labels.backend.showcase.product.tabother') }}</a></li>
                 </ul>
                 <div class="tab-content" style="margin-top: 10px;">
                     <!-- Filesystem tab -->
@@ -120,9 +120,9 @@
                             <div id="img-container">
                                 <ul id="img-list" class=""></ul>
                             </div>
-                            <input id="file-field" type="file" multiple="multiple" accept=".txt,image/*" style = "visibility: hidden;">
-                            <label for="file-field" class="btn btn-default">Выберите файл(ы)</label>
                         </div>
+                        <input id="file-field" type="file" multiple="multiple" accept=".txt,image/*" style = "visibility: hidden;">
+                        <label for="file-field" class="btn btn-block btn-info btn-lg">Добавить файл(ы)</label>
                     </div>
                     <div class="tab-pane" id="seo-tab">
                         <div class="box-body">
@@ -277,9 +277,9 @@
 
 
                 </div>
-            </div>
-        </div>
-
+            {{--</div>--}}
+        {{--</div>--}}
+    </div>
 
 {{--Главное фото--}}
             {{--<div class="form-group">--}}
@@ -293,7 +293,7 @@
     <div class="box box-info">
         <div class="box-body">
             <div class="pull-left">
-                {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+                {{ link_to_route('admin.showcase.product.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
             </div><!--pull-left-->
 
             <div class="pull-right">
@@ -325,142 +325,6 @@
         var cntImg = 0;
         // Имя формы, передаваемой в асинхронном запросе
         var ajaxFormName = "photo";
-
-        /**
-         * Created by OldDev on 21.04.2017.
-         */
-
-        /*
-         * Основные переменные (Лучше их задавать на странице, куда подключаем скрипт).
-         */
-        // // Стандарный input для файлов
-        // var fileInput = $('#file-field');
-        // // ul-список, содержащий миниатюрки выбранных файлов
-        // var imgList = $('ul#img-list');
-        // // Контейнер, куда можно помещать файлы методом drag and drop
-        // var dropBox = $('#img-container');
-        // // счетчик фото для формирования id
-        // var cntImg = 0;
-        // // Имя формы, передаваемой в асинхронном запросе
-        // var ajaxFormName = "photo";
-        // var control = document.getElementById("file-field");
-
-        /*
-         *   Основной обработчик.
-         *   Когда происходит изменение элементов управления, значит появились новые файлы.
-         *   Добавляем слушатель события изменения input
-         * */
-        control.addEventListener("change", function(event) {
-            var i = 0,
-                files = control.files,
-                len = files.length;
-            for (; i < len; i++) {
-                cntImg++;
-                displayFile(files[i],i);
-            }
-        }, false);
-
-        /*
-         *  Асинхронная отправка файла
-         */
-        function sendFile(file,i) {
-            var form = new FormData();
-            form.append(ajaxFormName, file);
-            var xhr = new XMLHttpRequest();
-            // Индикация прогресса отправки
-            xhr.upload.addEventListener("progress", function(e) {
-                if (e.lengthComputable) {
-                    var progress = (e.loaded * 100) / e.total;
-                    /* ... обновляем инфу о процессе загрузки ... */
-                    $( '#prg-'+i ).text(progress);
-                }
-            }, false);
-            // Отправка файла
-            xhr.onload = function() {
-                console.log("Отправка завершена");
-            };
-            xhr.open("post", "/frmt/2", true);
-            xhr.send(form);
-        }
-
-        /*
-         *  Создание и отображение миниатюры
-         */
-        function displayFile(file,i) {
-            if (!file.type.match(/image.*/)) {
-                // Отсеиваем не картинки
-                return true;
-            }
-
-            // а также создаем ему свойство file, куда помещаем объект File (при загрузке понадобится)
-            // кроме того, создается массив скрытых input-полей NewImgNames, в котором будут имена всех загружаемых
-            // изображений. Этот массив уйдёт вместе с остальными данными при отправке основной формы.
-
-            // Создаем элемент li с уникальным ID
-            var li = $('<li id=liImg-' + cntImg + '/>').appendTo(imgList);
-            // в нем делаем контейнер для аккуратной верстки инфо о картинке.
-            var row = $('<div/>').addClass('row').appendTo(li);
-            // В первую колонку ставим миниатюру
-            var col1 = $('<div/>').addClass('col-xs-12 col-sm-2').appendTo(row);
-            var img = $('<img/>').appendTo(col1);
-            // и progress bar
-            $('<div/>').attr('id','prg-'+cntImg).addClass('progress').text('0%').appendTo(col1);
-
-            // Во второй колонке
-            var col2 = $('<div/>').addClass('col-xs-12 col-sm-10').appendTo(row);
-            // создается массив скрытых input-полей NewImgNames, в котором будут имена всех загружаемых
-            // изображений. Этот массив уйдёт вместе с остальными данными при отправке основной формы.
-            var col2row1 = $('<div/>').addClass('row').appendTo(col2);
-            $('<input name="NewImgNames[]" type="hidden" value=' + file.name + '/>').appendTo(col2row1);
-            // массив для полей Alt. Не скрытые, можно менять. По умолчанию в поле название файла
-            $('<label for="NewImgAlts" class="col-lg-2 col-md-2 control-label">Alt (SEO)</label>').appendTo(col2row1);
-            $('<div class="col-lg-8 col-md-7"><input class="form-control" name="NewImgAlts[]" type="text" value=' + file.name + '/></div>').appendTo(col2row1);
-
-            // массив для полей Title. Не скрытые, можно менять. По умолчанию в поле название файла
-            var col2row2 = $('<div/>').addClass('row').appendTo(col2);
-            $('<label for="NewImgTitles" class="col-lg-2 col-md-2 control-label">Title (SEO)</label>').appendTo(col2row2);
-            $('<div class="col-lg-8 col-md-7"><input class="form-control" name="NewImgTitles[]" type="text" value=' + file.name + '/></div>').appendTo(col2row2);
-
-
-            li.get(0).file = file;
-            // Кнопка для удаления ненужного изображения
-            $('<div class="btn btn-default delImgBtn"/>').text('Удалить').appendTo(li);
-            // Создаем объект FileReader и по завершении чтения файла, отображаем миниатюру и обновляем
-            // инфу обо всех файлах
-            var reader = new FileReader();
-            reader.onload = (function (aImg) {
-                return function (e) {
-                    aImg.attr('src', e.target.result);
-                    aImg.attr('width', 150);
-                    /* ... обновляем инфу о выбранных файлах ... */
-                };
-            })(img);
-            reader.readAsDataURL(file);
-            sendFile(file,cntImg);
-        }
-
-        /*
-         *  Обработчик нажатия кнопки удаления.
-         */
-        $("body").on("click", ".delImgBtn", function () {
-            $(this).parent().remove();
-        });
-
-
-        // /* ... можно обрабатывать еще события load и error объекта xhr.upload ... */
-        // xhr.onreadystatechange = function () {
-        //     if (this.readyState == 4) {
-        //         if(this.status == 200) {
-        //             /* ... все ок! смотрим в this.responseText ... */
-        //             console.log('Всё ок');
-        //             console.log(file);
-        //         } else {
-        //             /* ... ошибка! ... */
-        //             console.log('vvvvvvvvvvvvv');
-        //         }
-        //     }
-        // };
-
     </script>
-
+    {{ Html::script('js/backend/access/products/uploadPic.js') }}
 @endsection

@@ -26,6 +26,16 @@ return [
                 'restore_user'          => 'Восстановить учетную запись',
             ],
         ],
+        'showcase'    => [
+            'product' => [
+                'activate'              => 'Активировать',
+                'change_password'       => 'Изменить пароль',
+                'deactivate'            => 'Деактивировать',
+                'delete_permanently'    => 'Удалить навсегда',
+                'resend_email'          => 'Повторно отправить подтверждение на E-mail',
+                'restore_product'       => 'Восстановить товар',
+            ],
+        ],
     ],
     'emails'    => [
         'auth'  => [
