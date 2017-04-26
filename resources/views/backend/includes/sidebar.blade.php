@@ -40,8 +40,8 @@
             @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span>{{ trans('menus.backend.access.shop_title_products') }}</span>
+                    <i class="fa fa-opencart"></i>
+                    <span>{{ trans('menus.backend.sidebar.shop') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
 
@@ -50,6 +50,13 @@
                         <a href="{{ route('admin.showcase.product.index') }}">
                             <i class="fa fa-circle-o"></i>
                             <span>{{ trans('labels.backend.showcase.product.management') }}</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
+                        <a href="{{ route('admin.showcase.brand.index') }}">
+                            <i class="fa fa-circle-o"></i>
+                            <span>{{ trans('labels.backend.showcase.brand.management') }}</span>
                         </a>
                     </li>
 

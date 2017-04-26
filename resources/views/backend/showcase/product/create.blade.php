@@ -326,5 +326,5 @@
         // Имя формы, передаваемой в асинхронном запросе
         var ajaxFormName = "photo";
     </script>
-    {{ Html::script('js/backend/access/products/uploadPic.js') }}
+    {{ Html::script('js/backend/common/uploadPic.js') }}
 @endsection

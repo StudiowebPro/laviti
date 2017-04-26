@@ -58,6 +58,7 @@ class ProductTableController extends Controller
                 }
             })
             ->addColumn('actions', function ($product) {
+                $fff = $product->action_buttons;
                 return $product->action_buttons;
             })
 //            ->withTrashed()

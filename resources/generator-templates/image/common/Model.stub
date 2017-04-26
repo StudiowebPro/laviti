@@ -1,0 +1,100 @@
+<?php 
+
+/**
+*  Model Brand table
+*  Created by Laravel-Generator
+*  Original:
+*  Used fork:
+*  https://github.com/StudiowebPro/laravel-generator
+*
+*  Ver 1.0.0
+*
+*/
+
+namespace $NAMESPACE_MODEL$$NAMESPACE_PACKAGE$\$MODEL_NAME$;
+
+use $NAMESPACE_MODEL_EXTEND$ as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use $NAMESPACE_MODEL$$NAMESPACE_PACKAGE$\$MODEL_NAME$\$MODEL_NAME$Attribute;
+
+
+$IMPORT_TRAIT$
+class $MODEL_NAME$ extends Model$AUTH_IMPLEMENTS$ implements HasMediaConversions
+{
+
+    use SoftDeletes,
+        Notifiable,
+        HasMediaTrait,
+        $MODEL_NAME$Attribute;
+    $USE_TRAIT$
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    public $table = "$TABLE_NAME$";
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public $fillable = [
+        $FIELDS$
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        $CAST$
+    ];
+
+
+    /**
+     * The attributes for SoftDelete.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+
+    /**
+     * The rules that is used to validate.
+     *
+     * @var array
+     */
+    public static $rules = [
+        $RULES$
+    ];
+
+
+    /**
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->table = config('$TABLE_NAME$');
+    }
+
+    public function registerMediaConversions()
+{
+    $this->addMediaConversion('thumb150')
+        ->width(150);
+
+    $this->addMediaConversion('thumb175')
+        ->width(175);
+
+    $this->addMediaConversion('thumb200')
+        ->width(200);
+}
+
+    $RELATIONSHIPS$
+
+}

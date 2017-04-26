@@ -56,14 +56,6 @@ class ProductRepository extends BaseRepository
         throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
 
-
-
-
-
-
-
-
-
     /**
      * @param bool $is_visible
      * @param bool $trashed

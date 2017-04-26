@@ -66,7 +66,6 @@ class Product extends Model  implements HasMediaConversions
 
         $this->addMediaConversion('thumb200')
             ->width(200);
+
     }
-
-
 }

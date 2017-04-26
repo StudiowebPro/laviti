@@ -82,8 +82,8 @@ return [
                 'tabseo'                =>  'SEO',
                 'tabdescription'        =>  'Описания',
                 'tabother'              =>  'Дополнительные',
-                'management'            => 'Товары',
-                'visible'               => 'Видимые товары',
+                'management'            =>  'Товары',
+                'visible'               =>  'Все товары',
                 'create'                =>  'Новый товар',
                 'createtitle'           =>  'Создать новый товар',
                 'table'                 => [
@@ -94,6 +94,25 @@ return [
                     'visible'           =>  'Показан',
                 ],
             ],
+            'brand' => [
+                'tabmain'               =>  'Основные',
+                'tabimg'                =>  'Фото',
+                'tabseo'                =>  'SEO',
+                'tabdescription'        =>  'Описания',
+                'tabother'              =>  'Дополнительные',
+                'management'            => 'Брэнды',
+                'visible'               => 'Все брэнды',
+                'create'                =>  'Новый брэнд',
+                'createtitle'           =>  'Создать новый товар',
+                'table'                 => [
+                    'name'              =>   'Наименование',
+                    'id'                =>    'ID',
+                    'is_visible'        =>    'Показан',
+                    'country_id'        =>    'Страна',
+                    'img'               =>    'Лого',
+                ],
+            ],
+
         ],
     ],
     'frontend'  => [

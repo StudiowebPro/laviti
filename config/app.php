@@ -203,8 +203,11 @@ return [
         App\Providers\MacroServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+
+        Laracasts\Flash\FlashServiceProvider::class,
+        Bluecode\Generator\GeneratorServiceProvider::class,
+
 
     ],
 
@@ -267,6 +270,7 @@ return [
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Flash'     => Laracasts\Flash\Flash::class,
 
 
     ],
