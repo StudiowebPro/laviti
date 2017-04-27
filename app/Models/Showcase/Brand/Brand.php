@@ -45,8 +45,7 @@ class Brand extends Model implements HasMediaConversions
     public $fillable = [
         'name',
 		'country_id',
-		'is_visible',
-		'img'
+		'is_visible'
     ];
 
     /**
@@ -57,8 +56,7 @@ class Brand extends Model implements HasMediaConversions
     protected $casts = [
         'name' => 'string',
 		'country_id' => 'integer',
-		'is_visible' => 'boolean',
-		'img' => 'string'
+		'is_visible' => 'boolean'
     ];
 
 
@@ -77,8 +75,7 @@ class Brand extends Model implements HasMediaConversions
      */
     public static $rules = [
         'name' => 'string',
-		'country_id' => 'integer',
-		'img' => 'string'
+		'country_id' => 'integer'
     ];
 
 

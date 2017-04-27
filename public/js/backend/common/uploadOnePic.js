@@ -64,6 +64,8 @@ function sendFile(file,i) {
 
 function deleteOldImg() {
     $('#liImg-'+cntImg).remove();
+    $('.oldImg').remove();
+
 }
 
 /*

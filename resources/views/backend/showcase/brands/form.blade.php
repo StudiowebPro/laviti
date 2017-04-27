@@ -40,20 +40,6 @@
 </div>
 
 
-<div class="form-group {!! $errors->has('img') ? 'has-error' : '' !!}">
-	{!! Form::label('img', 'Img', ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-10">
-        @if ( 'text' == 'checkbox' )
-            {!! Form::hidden('is_visible', 0) !!}
-    	    {!! Form::text('img', 1, ['class' => 'form-control']) !!}
-        @else
-            {!! Form::text('img', null, ['class' => 'form-control']) !!}
-        @endif
-    	{!! $errors->first('img', '<small class="help-block">:message</small>') !!}
-    </div>
-</div>
-
-
 <!-- Submit Field -->
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

@@ -1,7 +1,12 @@
 <div class="form-group {!! $errors->has('$FIELD_NAME$') ? 'has-error' : '' !!}">
 	{!! Form::label('$FIELD_NAME$', '$LABEL$', ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
-    	{!! Form::$INPUT_TYPE$('$FIELD_NAME$', null, ['class' => 'form-control']) !!}
+        @if ( '$INPUT_TYPE$' == 'checkbox' )
+            {!! Form::hidden('is_visible', 0) !!}
+    	    {!! Form::$INPUT_TYPE$('$FIELD_NAME$', 1, ['class' => 'form-control']) !!}
+        @else
+            {!! Form::$INPUT_TYPE$('$FIELD_NAME$', null, ['class' => 'form-control']) !!}
+        @endif
     	{!! $errors->first('$FIELD_NAME$', '<small class="help-block">:message</small>') !!}
     </div>
 </div>

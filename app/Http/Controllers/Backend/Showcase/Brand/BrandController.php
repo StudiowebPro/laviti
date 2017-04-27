@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Showcase\Brand;
 
+use App\Models\Showcase\Brand\Brand;
 use App\Http\Requests\Backend\Showcase\Brand\CreateBrandRequest;
 use App\Http\Requests\Backend\Showcase\Brand\UpdateBrandRequest;
+use App\Http\Requests\Backend\Showcase\Brand\ManageBrandRequest;
 use App\Services\Backend\Showcase\Brand\BrandService;
 use App\Http\Controllers\Controller as BaseController;
 use Flash;
@@ -76,18 +78,21 @@ class BrandController extends BaseController
     }
 
     /**
-     * Show the form for editing the specified Brand.
+     * @param Product              $product
+     * @param ManageProductRequest $request
      *
-     * @param  int $id
-     *
-     * @return Response
+     * @return mixed
      */
-    public function edit($id)
+    public function edit(Brand $brand, ManageBrandRequest  $request)
     {
-        $brand = $this->exist($id);
-
-        return view('backend.showcase.brands.edit')->with(compact('brand'));
+        $media=$brand->getMedia();
+        return view('backend.showcase.brands.edit')
+            ->withBrand($brand)
+            ->withMedia($media);
     }
+
+
+
 
     /**
      * Update the specified Brand in storage.

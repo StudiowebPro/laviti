@@ -43,19 +43,5 @@
     </div>
 </div>
 
-
-<div class="form-group {!! $errors->has('img') ? 'has-error' : '' !!}">
-	{!! Form::label('img', 'Img', ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-10">
-        @if ( '$INPUT_TYPE$' == 'checkbox' )
-            {!! Form::hidden('is_visible', 0) !!}
-    	    {!! Form::$INPUT_TYPE$('img', 1, ['class' => 'form-control']) !!}
-        @else
-            {!! Form::$INPUT_TYPE$('img', null, ['class' => 'form-control']) !!}
-        @endif
-    	{!! $errors->first('img', '<small class="help-block">:message</small>') !!}
-    </div>
-</div>
-
 </div>
 @endsection

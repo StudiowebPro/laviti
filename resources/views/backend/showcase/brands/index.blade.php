@@ -31,7 +31,6 @@
                             <th>{{ trans('labels.backend.showcase.brand.table.name') }}</th>
 					<th>{{ trans('labels.backend.showcase.brand.table.country_id') }}</th>
 					<th>{{ trans('labels.backend.showcase.brand.table.is_visible') }}</th>
-					<th>{{ trans('labels.backend.showcase.brand.table.img') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -75,7 +74,6 @@
                     {data: 'name', name: 'brands.name'},
 					{data: 'country_id', name: 'brands.country_id'},
 					{data: 'is_visible', name: 'brands.is_visible'},
-					{data: 'img', name: 'brands.img'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

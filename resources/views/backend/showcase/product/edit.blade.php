@@ -16,7 +16,6 @@
 
 @section('content')
     {{ Form::model($product, ['route' => ['admin.showcase.product.update', $product], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
-{{--{{ Form::model($user,    ['route' => ['admin.access.user.update', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}--}}
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('labels.backend.showcase.product.createtitle') }}</h3>

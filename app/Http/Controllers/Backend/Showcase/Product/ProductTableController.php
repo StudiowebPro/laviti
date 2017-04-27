@@ -40,17 +40,9 @@ class ProductTableController extends Controller
             ->editColumn('is_available', function ($product) {
                 return $product->confirmed_label;
             })
-//            ->addColumn('roles', function ($user) {
-//                return $user->roles->count() ?
-//                    implode('<br/>', $user->roles->pluck('name')->toArray()) :
-//                    trans('labels.general.none');
-//            })
             ->addColumn('img', function ($product) {
-//                $mediaItems = $product->getMedia();
                 $mediaItem = $product->getFirstMedia('images');
                 if ($mediaItem) {
-//                    $vp = $mediaItem->getUrl();
-//                    $vu = asset(config('app.mediaurl').$mediaItem->file_name);
                     $vu = ('<img src="'.$mediaItem->getUrl('thumb150').'">');
                     return $vu;
                 } else {
@@ -58,7 +50,6 @@ class ProductTableController extends Controller
                 }
             })
             ->addColumn('actions', function ($product) {
-                $fff = $product->action_buttons;
                 return $product->action_buttons;
             })
 //            ->withTrashed()
