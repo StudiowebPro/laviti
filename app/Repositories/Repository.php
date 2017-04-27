@@ -85,6 +85,7 @@ abstract class Repository
     }
 
     /**
+     * Soft delete record (no delete from DB, only set deleted_at)
      *
      * @param string|int $id
      * @param string $attribute
@@ -93,6 +94,20 @@ abstract class Repository
     public function delete($id, $attribute = 'id')
     {
         $record = $this->model->where($attribute, '=', $id)->first();
-        return $record ->forceDelete();
+        return $record->delete();
     }
+
+
+    /**
+     *  Force deleted record (without restore, delete from DB)
+     *
+     * @param string|int $id
+     * @param string $attribute
+     * @return mixed
+     */
+    public function forceDelete($model, $attribute = 'id')
+    {
+        return $model->forceDelete();
+    }
+
 }

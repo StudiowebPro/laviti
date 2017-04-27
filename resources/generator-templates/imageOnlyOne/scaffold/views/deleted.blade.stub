@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.showcase.brand.management'))
+@section ('title', trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.management'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
@@ -8,18 +8,18 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.showcase.brand.management') }}
-        <small>{{ trans('labels.backend.showcase.brand.visible') }}</small>
+        {{ trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.management') }}
+        <small>{{ trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.visible') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.showcase.brand.visible') }}</h3>
+            <h3 class="box-title">{{ trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.visible') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.showcase.brands.brand-header-buttons')
+                @include('$TRANS_PREFIX$.$MODEL_NAME_PLURAL_CAMEL$.$MODEL_NAME_CAMEL$-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -28,9 +28,7 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                     <tr>
-                        <th>{{ trans('labels.backend.showcase.brand.table.name') }}</th>
-                        <th>{{ trans('labels.backend.showcase.brand.table.country_id') }}</th>
-                        <th>{{ trans('labels.backend.showcase.brand.table.is_visible') }}</th>
+                        $FIELD_TRANS$
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
@@ -47,7 +45,7 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            {!! history()->renderType('Brand') !!}
+            {!! history()->renderType('$MODEL_NAME$') !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 @endsection
@@ -66,14 +64,12 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route("admin.showcase.brand.get") }}',
+                    url: '{{ route("$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.get") }}',
                     type: 'post',
                     data: {is_visible: 1, trashed: true }
                 },
                 columns: [
-                    {data: 'name', name: 'brands.name'},
-                    {data: 'country_id', name: 'brands.country_id'},
-                    {data: 'is_visible', name: 'brands.is_visible'},
+                    $FIELD_AJAX$
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

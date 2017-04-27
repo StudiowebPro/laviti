@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Showcase\Brand;
 use App\Models\Showcase\Brand\Brand;
 use App\Repositories\Repository;
+use App\Exceptions\GeneralException;
 use DB;
 
 class BrandRepository extends Repository
@@ -32,9 +33,12 @@ class BrandRepository extends Repository
         $dataTableQuery = $this->query()
             ->select([
                'brands.id',
-               'brands.name',
+				'brands.name',
 				'brands.country_id',
 				'brands.is_visible',
+				'brands.created_at',
+				'brands.updated_at',
+				'brands.deleted_at',
         ]);
         if ($trashed == 'true') {
             return $dataTableQuery->onlyTrashed();
@@ -72,6 +76,7 @@ class BrandRepository extends Repository
         $record ->fill($data);
         DB::transaction(function () use ($record ,$data) {
             if ($record->save()) {
+                $this->updateMediaAttributes($record, $data);
                 $this->deleteOldPhoto($record, $data);
                 $this->createOnePhotoAssociation($record, $data);
                 // event(new BrandCreated($this->model));
@@ -80,6 +85,22 @@ class BrandRepository extends Repository
             throw new GeneralException(trans('exceptions.backend.access.products.create_error'));
         });
     }
+
+    /**
+     *  Update Alt and Title for old image
+     * @param $record
+     * @param $input
+     */
+    protected function updateMediaAttributes($record,$input)
+    {
+        if (isset($input['oldImgNames'])) {
+            $media = $record->getMedia();
+            $media[0]->setCustomProperty('alt', $input['oldImgAlts'][0]);
+            $media[0]->name = $input['oldImgTitles'][0];
+            $media[0]->save();
+        }
+    }
+
 
     /**
      * @param $record
@@ -111,6 +132,28 @@ class BrandRepository extends Repository
                 ->usingName($NewImgTitles[0])
                 ->toMediaCollection();
         }
+    }
+
+    /**
+     * Restore Product, deleted by "Soft Deleted" method.
+     *
+     * @param Brand $brand
+     *
+     * @return bool
+     * @throws GeneralException
+     */
+    public function restore(Brand $brand)
+    {
+        if (is_null($brand->deleted_at)) {
+            throw new GeneralException(trans('exceptions.backend.showcase.brand.cant_restore'));
+        }
+
+        if ($brand->restore()) {
+    //            event(new ProductRestored($brand));
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.showcase.brand.restore_error'));
     }
 
 }

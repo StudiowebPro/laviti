@@ -1,0 +1,94 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$$NAMESPACE_PREFIX$$NAMESPACE_PACKAGE$\$MODEL_NAME$;
+
+use $NAMESPACE_MODEL$$NAMESPACE_PACKAGE$\$MODEL_NAME$\$MODEL_NAME$;
+use $NAMESPACE_REQUEST$$NAMESPACE_PREFIX$$NAMESPACE_PACKAGE$\$MODEL_NAME$\Manage$MODEL_NAME$Request;
+use $NAMESPACE_SERVICE$$NAMESPACE_PREFIX$$NAMESPACE_PACKAGE$\$MODEL_NAME$\$MODEL_NAME$Service;
+use $BASE_CONTROLLER$ as BaseController;
+
+/**
+ * Class $MODEL_NAME$StatusController
+ *
+ * @package App\Http\Controllers\Backend\Showcase\Brand
+ */
+class $MODEL_NAME$StatusController extends BaseController
+{
+
+    /**
+     * @var  $MODEL_NAME$Service
+     */
+    private $$MODEL_NAME_CAMEL$Service;
+
+    function __construct($MODEL_NAME$Service $$MODEL_NAME_CAMEL$Service)
+    {
+        $this->$MODEL_NAME_CAMEL$Service = $$MODEL_NAME_CAMEL$Service;
+    }
+
+
+    /**
+     * Показ "мягкоудаленных" записей
+     *
+     * @param Manage$MODEL_NAME$Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getDeleted(Manage$MODEL_NAME$Request $request)
+    {
+        return view('$VIEW_PATH$$VIEW_FOLDER_NAME$.deleted');
+    }
+
+
+    /**
+     *  Permanently deleted record from DB.
+     *  As default uses forceDelete method from BaseRepository.
+     *  your can make your custom method in YouModelRepository class
+     *  As default placed in App/Repository/YourPackage/ModelNameRepository.php
+     *
+     * @param                    $id
+     * @param Manage$MODEL_NAME$Request $request
+     *
+     * @return mixed
+     */
+    public function forceDelete($MODEL_NAME$ $$MODEL_NAME_CAMEL$, Manage$MODEL_NAME$Request $request)
+    {
+        $this->brandService->forceDelete($$MODEL_NAME_CAMEL$);
+        return redirect()->route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.deleted')->withFlashSuccess(trans('alerts.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.deleted_permanently'));
+    }
+
+
+    /**
+     * Восстановление файлов из корзины
+     *
+     * @param $MODEL_NAME$       $deleted$MODEL_NAME$
+     * @param Manage$MODEL_NAME$Request $request
+     *
+     * @return mixed
+     */
+    public function restore($MODEL_NAME$ $deleted$MODEL_NAME$, Manage$MODEL_NAME$Request $request)
+    {
+        $this->$MODEL_NAME_CAMEL$Service->restore($deleted$MODEL_NAME$);
+
+        return redirect()->route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.index')->withFlashSuccess(trans('alerts.alerts.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.restored'));
+    }
+
+
+
+
+    /**
+     * check if a record exist
+     *
+     * @param  int $id
+     * @return Eloquent
+     */
+    private function exist($id)
+    {
+        try {
+            $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Service->findOrFail($id);
+        } catch(ModelNotFoundException $e) {
+            return redirect(route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.index'))->withFlashError(trans('alerts.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.deleted_permanently'));
+        }
+    return $$MODEL_NAME_CAMEL$;
+    }
+}
+

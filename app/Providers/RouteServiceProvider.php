@@ -50,9 +50,9 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->bind('deletedBrand', function ($value) {
-            $product = new Brand();
+            $brand = new Brand();
 
-            return Brand::withTrashed()->where($product->getRouteKeyName(), $value)->first();
+            return Brand::withTrashed()->where($brand->getRouteKeyName(), $value)->first();
         });
 
         parent::boot();

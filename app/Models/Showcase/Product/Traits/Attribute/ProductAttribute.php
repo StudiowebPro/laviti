@@ -14,8 +14,8 @@ trait ProductAttribute
     public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
-            return $this->getRestoreButtonAttribute();
-//                $this->getDeletePermanentlyButtonAttribute();
+            return $this->getRestoreButtonAttribute().
+                $this->getDeletePermanentlyButtonAttribute();
         }
 
         return  $this->getEditButtonAttribute().

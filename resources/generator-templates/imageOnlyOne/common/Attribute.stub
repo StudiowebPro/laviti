@@ -47,7 +47,7 @@ trait $MODEL_NAME$Attribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="'.route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.restore_user').'"></i></a> ';
+        return '<a href="'.route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.$TRANS_PREFIX$$MODEL_NAME_CAMEL$.restore').'"></i></a> ';
     }
 
     /**
@@ -55,7 +55,7 @@ trait $MODEL_NAME$Attribute
      */
     public function getDeletePermanentlyButtonAttribute()
     {
-        return '<a href="'.route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.delete_permanently').'"></i></a> ';
+        return '<a href="'.route('$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.$TRANS_PREFIX$$MODEL_NAME_CAMEL$.delete_permanently').'"></i></a> ';
     }
 
     /**
@@ -65,16 +65,12 @@ trait $MODEL_NAME$Attribute
     {
         if ($this->trashed()) {
             return
-//                $this->getRestoreButtonAttribute().
-//                $this->getDeletePermanentlyButtonAttribute()
+                $this->getRestoreButtonAttribute().
+                $this->getDeletePermanentlyButtonAttribute()
             ;
-
         }
-
         return
-//            $this->getShowButtonAttribute().
             $this->getEditButtonAttribute().
             $this->getDeleteButtonAttribute();
-
     }
 }

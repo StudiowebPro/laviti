@@ -52,6 +52,7 @@ Route::group(
             }
         );
 
+
         Route::group(
             ['namespace' => 'Brand'],
             function () {
@@ -63,14 +64,13 @@ Route::group(
                  */
                 Route::get('brand/deleted', 'BrandStatusController@getDeleted')->name('brand.deleted');
 
-
                 /*
                  * Permanently deleted ("clear Trash") and restore soft-deleted products
                  */
                 Route::group(
-                    ['prefix' => 'brand/{deletedProduct}'],
+                    ['prefix' => 'brand/{deletedBrand}'],
                     function () {
-                        Route::get('delete', 'BrandStatusController@delete')
+                        Route::get('delete', 'BrandStatusController@forceDelete')
                             ->name('brand.delete-permanently');
                         Route::get('restore', 'BrandStatusController@restore')
                             ->name('brand.restore');
@@ -91,6 +91,34 @@ Route::group(
 );
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Brand routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('brands', 'BrandController');
+
+/*
+|--------------------------------------------------------------------------
+| Brand routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('brands', 'BrandController');
+
+/*
+|--------------------------------------------------------------------------
+| Brand routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('brands', 'BrandController');
+
+/*
+|--------------------------------------------------------------------------
+| Brand routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('brands', 'BrandController');
 
 /*
 |--------------------------------------------------------------------------
