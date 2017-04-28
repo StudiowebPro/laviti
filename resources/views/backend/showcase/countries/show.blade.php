@@ -17,21 +17,6 @@
 </div>
 
 
-<div class="form-group {!! $errors->has('country_id') ? 'has-error' : '' !!}">
-	{!! Form::label('country_id', trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.fields.country_id'),
-	    ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-10">
-        @if ( '$INPUT_TYPE$' == 'checkbox' )
-            {!! Form::hidden('is_visible', 0) !!}
-    	    {!! Form::$INPUT_TYPE$('country_id', 1, ['class' => 'form-control']) !!}
-        @else
-            {!! Form::$INPUT_TYPE$('country_id', null, ['class' => 'form-control']) !!}
-        @endif
-    	{!! $errors->first('country_id', '<small class="help-block">:message</small>') !!}
-    </div>
-</div>
-
-
 <div class="form-group {!! $errors->has('is_visible') ? 'has-error' : '' !!}">
 	{!! Form::label('is_visible', trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.fields.is_visible'),
 	    ['class' => 'col-sm-2 control-label']) !!}

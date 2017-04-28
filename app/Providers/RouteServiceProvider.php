@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Access\User\User;
 use App\Models\Showcase\Product\Product;
 use App\Models\Showcase\Brand\Brand;
+use App\Models\Showcase\Country\Country;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -53,6 +54,12 @@ class RouteServiceProvider extends ServiceProvider
             $brand = new Brand();
 
             return Brand::withTrashed()->where($brand->getRouteKeyName(), $value)->first();
+        });
+
+        $this->bind('deletedCountry', function ($value) {
+            $country = new Country();
+
+            return Country::withTrashed()->where($country->getRouteKeyName(), $value)->first();
         });
 
         parent::boot();

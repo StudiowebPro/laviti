@@ -60,12 +60,14 @@
                         </a>
                     </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/access/role*')) }}">
-                        <a href="{{ route('admin.access.role.index') }}">
+                    <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
+                        <a href="{{ route('admin.showcase.country.index') }}">
                             <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                            <span>{{ trans('labels.backend.showcase.country.management') }}</span>
                         </a>
                     </li>
+
+
                 </ul>
             </li>
             @endauth

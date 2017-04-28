@@ -9,14 +9,14 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.showcase.brand.management') }}
-        <small>{{ trans('labels.backend.showcase.brand.visible') }}</small>
+        <small>{{ trans('labels.backend.showcase.brand.header_deleted') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.showcase.brand.visible') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.showcase.brand.title_deleted') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.showcase.brands.brand-header-buttons')
@@ -29,8 +29,8 @@
                     <thead>
                     <tr>
                         <th>{{ trans('labels.backend.showcase.brand.table.name') }}</th>
-                        <th>{{ trans('labels.backend.showcase.brand.table.country_id') }}</th>
-                        <th>{{ trans('labels.backend.showcase.brand.table.is_visible') }}</th>
+					<th>{{ trans('labels.backend.showcase.brand.table.country_id') }}</th>
+					<th>{{ trans('labels.backend.showcase.brand.table.is_visible') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
@@ -61,7 +61,15 @@
             $('#users-table').DataTable({
                 "lengthMenu": [ 25, 50, 75, 100 ],
                 "language": {
-                    "search": "Поиск:"
+                    "search": "Поиск:",
+                    paginate: {
+                        first       :       '{{ trans('tables.paginate.first') }}',
+                        previous    :       '{{ trans('tables.paginate.previous') }}',
+                        next        :       '{{ trans('tables.paginate.next') }}',
+                        last        :       '{{ trans('tables.paginate.last') }}'
+                    },
+                    "emptyTable"    :   '{{ trans('tables.no_data') }}',
+                    "info"          :   "{{ trans('tables.show_page') }} _PAGE_ {{ trans('tables.of_page') }} _PAGES_"
                 },
                 processing: true,
                 serverSide: true,
@@ -72,8 +80,8 @@
                 },
                 columns: [
                     {data: 'name', name: 'brands.name'},
-                    {data: 'country_id', name: 'brands.country_id'},
-                    {data: 'is_visible', name: 'brands.is_visible'},
+					{data: 'country_id', name: 'brands.country_id'},
+					{data: 'is_visible', name: 'brands.is_visible'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

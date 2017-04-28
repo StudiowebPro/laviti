@@ -3,4 +3,30 @@
 | $MODEL_NAME$ routes
 |--------------------------------------------------------------------------
 */
-Route::resource('$RESOURCE_URL$', '$MODEL_NAME$Controller');
+Route::group(
+    ['namespace' => '$MODEL_NAME$'],
+    function () {
+
+        Route::post('$MODEL_NAME_CAMEL$/get', '$MODEL_NAME$TableController')->name('$MODEL_NAME_CAMEL$.get');
+
+        /**
+        * Show deleted products table
+        */
+        Route::get('$MODEL_NAME_CAMEL$/deleted', '$MODEL_NAME$StatusController@getDeleted')->name('$MODEL_NAME_CAMEL$.deleted');
+
+        /*
+        * Permanently deleted ("clear Trash") and restore soft-deleted products
+        */
+        Route::group(
+            ['prefix' => '$MODEL_NAME_CAMEL$/{deleted$MODEL_NAME$}'],
+            function () {
+                Route::get('delete', '$MODEL_NAME$StatusController@forceDelete')->name('$MODEL_NAME_CAMEL$.delete-permanently');
+                Route::get('restore', '$MODEL_NAME$StatusController@restore')->name('$MODEL_NAME_CAMEL$.restore');
+            }
+        );
+
+        Route::resource('$MODEL_NAME_CAMEL$', '$MODEL_NAME$Controller');
+
+    }
+);
+//=========================  END $MODEL_NAME$ routes =====================================================

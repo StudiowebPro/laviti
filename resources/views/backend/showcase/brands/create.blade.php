@@ -1,5 +1,5 @@
 @extends ('backend.layouts.app')
-@section ('title', trans('labels.backend.showcase.brands.management') . ' | ' . trans('labels.backend.showcase.brands.create'))
+@section ('title', trans('labels.backend.showcase.brand.management') . ' | ' . trans('labels.backend.showcase.brand.create'))
 
 @section('after-styles')
     {{ Html::style('css/backend/products/create.css') }}

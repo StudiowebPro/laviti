@@ -1,5 +1,5 @@
 <div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
-	{!! Form::label('name', trans('labels.backend.showcase.brand.fields.name'),
+	{!! Form::label('name', trans('labels.backend.showcase.country.fields.name'),
 	    ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
         @if ( 'text' == 'checkbox' )
@@ -13,23 +13,8 @@
 </div>
 
 
-<div class="form-group {!! $errors->has('country_id') ? 'has-error' : '' !!}">
-	{!! Form::label('country_id', trans('labels.backend.showcase.brand.fields.country_id'),
-	    ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-10">
-        @if ( 'number' == 'checkbox' )
-            {!! Form::hidden('is_visible', 0) !!}
-    	    {!! Form::number('country_id', 1, ['class' => 'form-control']) !!}
-        @else
-            {!! Form::number('country_id', null, ['class' => 'form-control']) !!}
-        @endif
-    	{!! $errors->first('country_id', '<small class="help-block">:message</small>') !!}
-    </div>
-</div>
-
-
 <div class="form-group {!! $errors->has('is_visible') ? 'has-error' : '' !!}">
-	{!! Form::label('is_visible', trans('labels.backend.showcase.brand.fields.is_visible'),
+	{!! Form::label('is_visible', trans('labels.backend.showcase.country.fields.is_visible'),
 	    ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
         @if ( 'checkbox' == 'checkbox' )

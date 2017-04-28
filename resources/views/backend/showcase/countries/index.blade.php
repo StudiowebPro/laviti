@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.management'))
+@section ('title', trans('labels.backend.showcase.country.management'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
@@ -8,18 +8,18 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.management') }}
-        <small>{{ trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.header_index') }}</small>
+        {{ trans('labels.backend.showcase.country.management') }}
+        <small>{{ trans('labels.backend.showcase.country.header_index') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.$TRANS_PREFIX$.$MODEL_NAME_CAMEL$.title_index') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.showcase.country.title_index') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('$TRANS_PREFIX$.$MODEL_NAME_PLURAL_CAMEL$.$MODEL_NAME_CAMEL$-header-buttons')
+                @include('backend.showcase.countries.country-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
@@ -28,7 +28,8 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            $FIELD_TRANS$
+                            <th>{{ trans('labels.backend.showcase.country.table.name') }}</th>
+					<th>{{ trans('labels.backend.showcase.country.table.is_visible') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
@@ -45,7 +46,7 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            {!! history()->renderType('$MODEL_NAME$') !!}
+            {!! history()->renderType('Country') !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 @endsection
@@ -73,12 +74,13 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route("$ROUTE_PREFIX$$MODEL_NAME_CAMEL$.get") }}',
+                    url: '{{ route("admin.showcase.country.get") }}',
                     type: 'post',
                     data: {is_visible: 1, trashed: false}
                 },
                 columns: [
-                    $FIELD_AJAX$
+                    {data: 'name', name: 'countries.name'},
+					{data: 'is_visible', name: 'countries.is_visible'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

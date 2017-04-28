@@ -38,7 +38,9 @@ return [
 
     'path_request'             => app_path('Http/Requests/'),
 
-    'path_route'               => base_path('routes/Backend/Showcase.php'),
+//    'path_route'               => base_path('routes/Backend/ShowcaseTrash.php'),
+
+    'path_route'               => base_path('ShowcaseTrash.php'),
 
     'path_factory'             => base_path('database/factories/ModelFactory.php'),
 

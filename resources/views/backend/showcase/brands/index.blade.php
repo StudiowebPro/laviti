@@ -9,14 +9,14 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.showcase.brand.management') }}
-        <small>{{ trans('labels.backend.showcase.brand.visible') }}</small>
+        <small>{{ trans('labels.backend.showcase.brand.header_index') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.showcase.brand.visible') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.showcase.brand.title_index') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.showcase.brands.brand-header-buttons')
@@ -61,7 +61,16 @@
             $('#users-table').DataTable({
                 "lengthMenu": [ 25, 50, 75, 100 ],
                 "language": {
-                    "search": "Поиск:"
+                    "search": "Поиск:",
+                    paginate: {
+                        first       :       '{{ trans('tables.paginate.first') }}',
+                        previous    :       '{{ trans('tables.paginate.previous') }}',
+                        next        :       '{{ trans('tables.paginate.next') }}',
+                        last        :       '{{ trans('tables.paginate.last') }}'
+                    },
+                    "emptyTable"    :   '{{ trans('tables.no_data') }}',
+                    "info"          :   "{{ trans('tables.show_entries.showing') }} _START_ {{ trans('tables.show_entries.to') }} _END_ {{ trans('tables.show_entries.of') }} _TOTAL_",
+                    "infoEmpty"     :   "{{ trans('tables.show_entries.showing') }} 0 {{ trans('tables.show_entries.to') }} 0 {{ trans('tables.show_entries.of') }} 0"
                 },
                 processing: true,
                 serverSide: true,
